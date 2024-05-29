@@ -1,18 +1,19 @@
 spin_manifest_version = 2
 
 [application]
-name = "spin_practice"
+name = "cc-spin-test"
 version = "0.1.0"
 authors = ["Jinwoo Kim <jinwookim@kw.ac.kr>"]
 description = ""
 
 [[trigger.http]]
 route = "/..."
-component = "spin-practice"
+component = "cc-spin-test"
 
-[component.spin-practice]
-source = "target/wasm32-wasi/release/spin_practice.wasm"
-allowed_outbound_hosts = []
-[component.spin-practice.build]
-command = "cargo build --target wasm32-wasi --release"
+[component.cc-spin-test]
+source = "target/wasm32-wasi/release/cc_spin_test.wasm"
+allowed_outbound_hosts = ["tcp://139.162.81.90:10300"]
+
+[component.cc-spin-test.build]
+command = "cargo component build --release"
 watch = ["src/**/*.rs", "Cargo.toml"]

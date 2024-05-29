@@ -1,5 +1,5 @@
 [package]
-name = "spin-practice"
+name = "cc-spin-test"
 authors = ["Jinwoo Kim <jinwookim@kw.ac.kr>"]
 description = ""
 version = "0.1.0"
@@ -9,8 +9,25 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-anyhow = "1"
-spin-sdk = "3.0.1"
 wit-bindgen-rt = { version = "0.25.0", features = ["bitflags"] }
+serde_json = "1.0"
 
 [workspace]
+
+[profile.release]
+codegen-units = 1
+opt-level = "s"
+debug = false
+strip = true
+lto = true
+
+[package.metadata.component.registries]
+default = "https://fermyon.wa.dev"
+
+[package.metadata.component]
+package = "component:ccspintest"
+
+[package.metadata.component.dependencies]
+
+[package.metadata.component.target.dependencies]
+"fermyon:spin" = "2.0.0"
