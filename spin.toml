@@ -1,0 +1,18 @@
+spin_manifest_version = 2
+
+[application]
+name = "spin_practice"
+version = "0.1.0"
+authors = ["Jinwoo Kim <jinwookim@kw.ac.kr>"]
+description = ""
+
+[[trigger.http]]
+route = "/..."
+component = "spin-practice"
+
+[component.spin-practice]
+source = "target/wasm32-wasi/release/spin_practice.wasm"
+allowed_outbound_hosts = []
+[component.spin-practice.build]
+command = "cargo build --target wasm32-wasi --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
