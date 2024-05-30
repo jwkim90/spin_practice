@@ -12,7 +12,7 @@ component = "cc-spin-test"
 
 [component.cc-spin-test]
 source = "target/wasm32-wasi/release/cc_spin_test.wasm"
-allowed_outbound_hosts = ["tcp://139.162.81.90:10300"]
+allowed_outbound_hosts = ["*://*:*"]
 
 [component.cc-spin-test.build]
 command = "cargo component build --release"
